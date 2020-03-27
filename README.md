@@ -1,2 +1,2 @@
 # cmake-project-template
-A base C++ project build with CMake and heavy documentation
+A base C++ project built with carefully documented CMakeLists.txt

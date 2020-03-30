@@ -1,6 +1,8 @@
 # cmake-project-template
 A base C++ project built with carefully documented CMakeLists.txt
 
+This project is meant to be a ready-built setup that can be used to build a C++ project with a library, tests and executables that can be installed and exported for other users to import with `find_package(libname)`. To use it, simply fork and add source files to the file lists in `include/`, `src/`, and `tests/`. 
+
 File structure:
 ```
     ├── CMakeLists.txt

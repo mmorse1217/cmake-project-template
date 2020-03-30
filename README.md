@@ -2,6 +2,7 @@
 A base C++ project built with carefully documented CMakeLists.txt
 
 File structure:
+```
     ├── CMakeLists.txt
     ├── LICENSE
     ├── README.md
@@ -17,8 +18,9 @@ File structure:
     │   └── source_file.cpp
     └── tests
         └── CMakeLists.txt
+```
 
-Important links:
+Helpful links:
 * [C++Now 2017: Daniel Pfeifer “Effective CMake"](https://youtu.be/bsXLMQ6WgIk)
     (also
     [here](https://github.com/boostcon/cppnow_presentations_2017/blob/master/05-19-2017_friday/effective_cmake__daniel_pfeifer__cppnow_05-19-2017.pdf)

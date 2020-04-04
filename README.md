@@ -13,8 +13,6 @@ File structure:
     ├── include
     │   ├── CMakeLists.txt
     │   └── source_file.hpp
-    ├── lib
-    │   └── libCMakeDemo.a
     ├── src
     │   ├── CMakeLists.txt
     │   └── source_file.cpp
@@ -30,3 +28,4 @@ Helpful links:
 * [foonathan::blog(): Tutorial: Easily supporting CMake install and find_package()](https://foonathan.net/2016/03/cmake-install/)
 * [Effective Modern CMake](https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1)
 * [CMake Documentation: Exporting and Importing Targets](https://gitlab.kitware.com/cmake/community/-/wikis/doc/tutorials/Exporting-and-Importing-Targets)
+* [An Introduction to Modern CMake](https://cliutils.gitlab.io/modern-cmake/)

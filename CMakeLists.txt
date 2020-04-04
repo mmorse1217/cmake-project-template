@@ -17,6 +17,7 @@ set(CMAKE_CXX_STANDARD 11)
 #   find_package(CMakeDemo 1.0 REQUIRED)
 project(CMakeDemo)
 set(CMakeDemo_VERSION 1.0)
+include(CTest)
 
 # Function to prepend the subdirectory to source files in subdirectories
 FUNCTION(PREPEND var )
@@ -42,11 +43,23 @@ find_package(LAPACK REQUIRED)
 add_subdirectory(src)
 add_subdirectory(include)
 
+# Add the test directory. It is optional and can be disabled during with
+#   cmake -DBUILD_TESTING=OFF ..
+# To run unit tests produced here, we only need to run:
+#   make test
+# or
+#   ctest 
+# In case your tests are printing to console, you can view their output to
+# stdout with:
+#   ctest -V
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
+
 # Add the library CMakeDemo as a target, with the contents of src/ and include/
 # as dependencies.
 add_library(CMakeDemo STATIC ${CMakeDemo_SRC} ${CMakeDemo_INC})
-#add_library(CMakeDemo::CMakeDemo ALIAS CMakeDemo)
-#set_property(TARGET CMakeDemo PROPERTY EXPORT_NAME CMakeDemo::CMakeDemo)
 
 # These variables slightly modify the install location to allow for version
 # specific installations.
@@ -72,7 +85,7 @@ target_include_directories(CMakeDemo PUBLIC
    $<BUILD_INTERFACE:${CMakeDemo_SOURCE_DIR}/include> 
    $<BUILD_INTERFACE:${CMakeDemo_BINARY_DIR}/include> 
 
-   # headers to include when installing  (implicitly prefixes with ${CMAKE_INSTALL_PREFIX}.
+   # headers to include when installing  (implicitly prefixes with ${CMAKE_INSTALL_PREFIX}).
    $<INSTALL_INTERFACE:include> 
    )
 
@@ -81,10 +94,6 @@ target_include_directories(CMakeDemo PUBLIC
 # However, each package is different and one must check the documentation to 
 # see what variables are defined.
 target_link_libraries(CMakeDemo ${LAPACK_LIBRARIES})
-
-#if (COMPILE_BINARY)
-#    add_subdirectory(exec)
-#endif()
 
 # Install CMakeDemo in CMAKE_INSTALL_PREFIX (defaults to /usr/local on linux). 
 # To change the install location, run 

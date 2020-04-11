@@ -15,8 +15,10 @@ set(CMAKE_CXX_STANDARD 11)
 # Set the project name and version number. This allows for a user of your
 # library or tool to specify a particular version when they include it, as in 
 #   find_package(CMakeDemo 1.0 REQUIRED)
-project(CMakeDemo)
+project(CMakeDemo VERSION 1.0)
 set(CMakeDemo_VERSION 1.0)
+
+# enable unit testing via "make test" once the code has been compiled.
 include(CTest)
 
 # Function to prepend the subdirectory to source files in subdirectories

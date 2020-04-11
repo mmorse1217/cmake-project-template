@@ -1,7 +1,33 @@
 # cmake-project-template
-A base C++ project built with carefully documented CMakeLists.txt
+A base C++ project built with documented CMakeLists.txt
 
-This project is meant to be a ready-built setup that can be used to build a C++ project with a library, tests and executables that can be installed and exported for other users to import with `find_package(libname)`. To use it, simply fork and add source files to the file lists in `include/`, `src/`, and `tests/`. 
+This project is meant to be a ready-built setup that can be used to build a C++ project with a library, tests and executables that can be installed and exported for other users to import with `find_package(CMakeDemo)`. 
+There is a simple version of a find module in `cmake` for the project, `FindCMakeDemo.cmake`, that searches several environment variables and `/usr/local` for installations of `CMakeDemo`. 
+There is also a baseline `CMakeDemo-config.cmake` file to support transitive dependencies when the project is found via `find_package`.
+To use it, simply fork, add source files to the file lists in `include/`, `src/`, and `tests/`, and replace `CMakeDemo` with the name of your project throughout the `CMakeLists.txt` files.
+
+To compile the project:
+```
+    mkdir build
+    cd build
+    cmake ..
+    make
+```
+To install the project in `/usr/local/`:
+```
+    make install
+```
+To run unit tests via CTest, run:
+```
+    make test
+```
+or 
+```
+    ctest
+```
+
+To add additional dependencies via `find_package`, be sure to also include them in `cmake/CMakeDemo-config.cmake`. 
+`LAPACK` is included as an example.
 
 File structure:
 ```
@@ -9,7 +35,8 @@ File structure:
     ├── LICENSE
     ├── README.md
     ├── cmake
-    │   └── CMakeDemo-config.cmake
+    │   ├── CMakeDemo-config.cmake
+    │   └── FindCMakeDemo.cmake
     ├── include
     │   ├── CMakeLists.txt
     │   └── source_file.hpp
@@ -17,7 +44,9 @@ File structure:
     │   ├── CMakeLists.txt
     │   └── source_file.cpp
     └── tests
-        └── CMakeLists.txt
+        ├── CMakeLists.txt
+        ├── catch.hpp
+        └── test_cmake_demo.cpp
 ```
 
 Helpful links:
